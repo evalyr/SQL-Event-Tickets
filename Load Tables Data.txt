@@ -1,0 +1,59 @@
+COPY dev.public.categories
+FROM 's3://tickets-data-files/categories_pipe.txt'
+IAM_ROLE 'arn:aws:iam::850168058824:role/LabRole'
+DELIMITER '|' REGION AS 'us-east-1';
+
+SELECT * FROM categories LIMIT 100;
+
+
+
+COPY dev.public.dates
+FROM 's3://tickets-data-files/dates_pipe.txt'
+IAM_ROLE 'arn:aws:iam::850168058824:role/LabRole'
+DELIMITER '|' REGION AS 'us-east-1';
+
+SELECT * FROM dates LIMIT 100;
+
+
+
+COPY dev.public.events
+FROM 's3://tickets-data-files/events_pipe.txt' 
+IAM_ROLE 'arn:aws:iam::850168058824:role/LabRole'
+DELIMITER '|' TIMEFORMAT 'YYYY-MM-DD HH:MI:SS' REGION AS 'us-east-1';
+
+SELECT * FROM events LIMIT 100;
+
+
+
+COPY dev.public.venues
+FROM 's3://tickets-data-files/venues_pipe.txt' 
+IAM_ROLE 'arn:aws:iam::850168058824:role/LabRole'
+DELIMITER '|' REGION AS 'us-east-1';
+
+SELECT * FROM venues LIMIT 100;
+
+
+
+COPY dev.public.users
+FROM 's3://tickets-data-files/users_pipe.txt' 
+IAM_ROLE 'arn:aws:iam::850168058824:role/LabRole'
+DELIMITER '|' REGION AS 'us-east-1';
+
+SELECT * FROM users LIMIT 100;
+
+
+
+COPY dev.public.sales
+FROM 's3://tickets-data-files/sales_tab.txt'
+IAM_ROLE 'arn:aws:iam::850168058824:role/LabRole'
+DELIMITER '\t' TIMEFORMAT 'MM/DD/YYYY HH:MI:SS' REGION AS 'us-east-1';
+
+SELECT * FROM sales LIMIT 100;
+
+
+COPY dev.public.listings
+FROM 's3://tickets-data-files/listings_pipe.txt' 
+IAM_ROLE 'arn:aws:iam::850168058824:role/LabRole'
+DELIMITER '|' REGION AS 'us-east-1';
+
+SELECT * FROM listings LIMIT 100;
